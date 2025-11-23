@@ -2,47 +2,55 @@
 
 import { motion } from 'framer-motion'
 import Container from '../ui/Container'
-import { Shield, ActivitySquare, AlertCircle, HardDrive, Layers, FileText } from 'lucide-react'
+import { Shield, ActivitySquare, AlertCircle, HardDrive, Layers, FileText, Lock } from 'lucide-react'
 
 const infrastructure = [
   {
     icon: Layers,
     title: 'Microservices Architecture',
-    description: 'Scalable, modular design with isolated services for maximum reliability',
+    description: 'Modular, loosely coupled design for scale',
   },
   {
     icon: ActivitySquare,
-    title: 'Monitoring & Alerts',
-    description: 'Real-time logs, dashboards, and automated alerts for proactive issue detection',
+    title: 'Monitoring',
+    description: 'Execution logs, alerts, and performance dashboards',
   },
   {
     icon: AlertCircle,
     title: 'Error Handling',
-    description: 'Comprehensive catch flows and recovery triggers for fault tolerance',
+    description: 'Centralized catch flows and recovery triggers',
   },
   {
     icon: HardDrive,
     title: 'Daily Backups',
-    description: 'Automated GitHub backups ensuring business continuity and version control',
+    description: 'GitHub-based automated backup routines',
   },
   {
     icon: Layers,
     title: 'Multi-Layer Logic',
-    description: 'Separated API, data, and automation layers for clean architecture',
+    description: 'API layer, data layer, and automation layer separation',
   },
   {
     icon: FileText,
-    title: 'Complete Documentation',
-    description: 'Technical and user documentation for seamless knowledge transfer',
+    title: 'Project Documentation',
+    description: 'Every project includes technical and user documentation',
+  },
+  {
+    icon: Lock,
+    title: 'Security by Design',
+    description: 'Built with software security principles in mind',
   },
 ]
 
 const Infrastructure = () => {
   return (
-    <section className="py-32 bg-navy-900 relative overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 bg-noise opacity-30" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-cyan-500/5 to-transparent rounded-full blur-3xl" />
+    <section className="py-20 md:py-32 section-accent border-t border-violet-100">
+      {/* Background decoration */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-grid opacity-50" />
+        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-violet-100/40 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-100/40 rounded-full blur-3xl" />
+      </div>
 
       <Container className="relative z-10">
         <motion.div
@@ -50,21 +58,24 @@ const Infrastructure = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16 px-4"
         >
-          <div className="inline-flex items-center space-x-2 px-4 py-2 bg-navy-800/50 border border-cyan-500/30 rounded-full mb-6">
-            <Shield className="w-4 h-4 text-cyan-500" />
-            <span className="text-sm text-gray-400">Security by Design</span>
+          <div className="badge mb-4 sm:mb-6 shadow-sm">
+            <Shield className="w-3.5 h-3.5 mr-2 text-violet-600" />
+            <span>Security by Design</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Best Practice Infrastructure
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-display text-neutral-900 mb-3 sm:mb-4 tracking-tight">
+            Best Practice{' '}
+            <span className="text-gradient">
+              Infrastructure
+            </span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Enterprise-grade architecture built for reliability, scalability, and security
+          <p className="text-base sm:text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto">
+            Enterprise-grade reliability and modular design in every system we build
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 max-w-7xl mx-auto px-4 sm:px-0">
           {infrastructure.map((item, index) => {
             const Icon = item.icon
             return (
@@ -73,14 +84,22 @@ const Infrastructure = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative group"
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                className="group relative"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="relative bg-navy-800/50 border border-navy-600 rounded-lg p-6 h-full group-hover:border-cyan-500/50 transition-all duration-300">
-                  <Icon className="w-10 h-10 text-cyan-500 mb-4" />
-                  <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{item.description}</p>
+                <div className="card card-hover h-full">
+                  {/* Icon */}
+                  <div className="icon-container mb-4 sm:mb-6 group-hover:border-violet-200 transition-all">
+                    <Icon className="w-6 h-6 text-violet-600 group-hover:text-violet-700 transition-colors" />
+                  </div>
+
+                  <h3 className="text-lg sm:text-xl font-display font-bold text-neutral-900 mb-2 tracking-tight group-hover:text-violet-700 transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-neutral-600 leading-relaxed">{item.description}</p>
+
+                  {/* Bottom accent line on hover */}
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity rounded-b-xl" />
                 </div>
               </motion.div>
             )
@@ -93,11 +112,13 @@ const Infrastructure = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16 text-center"
+          className="mt-12 sm:mt-16 text-center px-4"
         >
-          <p className="text-gray-400 text-lg">
-            Every project is built with production-grade standards from day one
-          </p>
+          <div className="card border-violet-200 shadow-soft inline-block px-8 py-4">
+            <p className="text-neutral-600 text-sm sm:text-base">
+              <span className="text-violet-700 font-bold">Production-grade standards</span> from day one
+            </p>
+          </div>
         </motion.div>
       </Container>
     </section>

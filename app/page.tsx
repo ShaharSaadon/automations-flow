@@ -23,6 +23,8 @@ export default function Home() {
       <CaseStudiesEnhanced />
       <Process />
       <TechStack />
+      <Infrastructure />
+      <Team />
       <Testimonials />
       <Pricing />
       <FAQ />
