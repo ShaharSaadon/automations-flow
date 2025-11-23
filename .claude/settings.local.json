@@ -20,7 +20,8 @@
       "Bash(git remote add:*)",
       "Bash(git branch:*)",
       "Bash(git push:*)",
-      "WebFetch(domain:windmillgrowth.com)"
+      "WebFetch(domain:windmillgrowth.com)",
+      "Bash(timeout 5 bash:*)"
     ],
     "deny": [],
     "ask": []
