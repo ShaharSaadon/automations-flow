@@ -8,18 +8,18 @@ import { TrendingUp, Workflow, Zap, Shield } from 'lucide-react'
 const stats = [
   {
     icon: Workflow,
-    value: 1200,
+    value: 50,
     suffix: '+',
     decimals: 0,
-    label: 'Workflows Deployed',
+    label: 'AI Agents Deployed',
     description: 'Production systems',
   },
   {
     icon: Zap,
-    value: 2,
-    suffix: 'M+',
+    value: 100,
+    suffix: 'K+',
     label: 'Messages Processed',
-    description: 'Daily volume',
+    description: 'Monthly volume',
   },
   {
     icon: TrendingUp,
@@ -31,8 +31,8 @@ const stats = [
   },
   {
     icon: Shield,
-    value: 10,
-    suffix: 'x',
+    value: 170,
+    suffix: '%',
     label: 'Average ROI',
     description: 'Client returns',
   },
@@ -40,13 +40,10 @@ const stats = [
 
 const Stats = () => {
   return (
-    <section className="py-16 md:py-24 relative overflow-hidden bg-white border-y border-violet-100">
-      {/* Subtle background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-violet-50/30 via-white to-violet-50/30" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-200 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-200 to-transparent" />
-      </div>
+    <section className="section-overlay-light py-16 md:py-24 relative overflow-hidden border-y border-violet-100/60">
+      {/* Subtle accent lines for visual separation */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-200/50 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-200/50 to-transparent pointer-events-none" />
 
       <Container className="relative z-10">
         {/* Stats Grid - Clean & Minimal */}

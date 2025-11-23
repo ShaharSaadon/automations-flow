@@ -15,7 +15,7 @@ import Footer from '@/components/sections/Footer'
 
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-x-hidden">
+    <main className="min-h-screen overflow-x-hidden page-gradient">
       <Navigation />
       <Hero />
       <Stats />

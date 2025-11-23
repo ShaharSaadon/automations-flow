@@ -51,6 +51,8 @@ const Navigation = () => {
   const navLinks = [
     { label: 'Services', id: 'services' },
     { label: 'Work', id: 'case-studies' },
+    { label: 'Process', id: 'process' },
+    { label: 'Tech Stack', id: 'tech-stack' },
     { label: 'Pricing', id: 'pricing' },
   ]
 
@@ -87,7 +89,7 @@ const Navigation = () => {
             <Button
               onClick={() => scrollToSection('contact')}
               size="sm"
-              className="bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white border-0 font-medium text-sm px-5 py-2 shadow-sm hover:shadow-md transition-all"
+              className="bg-gradient-to-r from-[#685bff] to-[#acb0ff] hover:from-[#5a4ceb] hover:to-[#9ca0f5] text-white border-0 font-medium text-sm px-5 py-2 shadow-sm hover:shadow-md transition-all"
             >
               Contact
             </Button>
@@ -136,7 +138,7 @@ const Navigation = () => {
                   <Button
                     onClick={() => scrollToSection('contact')}
                     size="lg"
-                    className="w-full bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white border-0 font-medium"
+                    className="w-full bg-gradient-to-r from-[#685bff] to-[#acb0ff] hover:from-[#5a4ceb] hover:to-[#9ca0f5] text-white border-0 font-medium"
                   >
                     Contact
                   </Button>

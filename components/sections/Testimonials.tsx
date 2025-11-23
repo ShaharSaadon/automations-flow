@@ -6,10 +6,10 @@ import { Quote } from 'lucide-react'
 
 const Testimonials = () => {
   return (
-    <section className="py-20 md:py-32 section-gradient">
-      {/* Background decoration */}
-      <div className="absolute inset-0">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-radial from-violet-100/40 to-transparent rounded-full blur-3xl" />
+    <section className="py-20 md:py-32 section-overlay-light">
+      {/* Subtle background decoration - layers on page gradient */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-dot-pattern opacity-15" />
       </div>
 
       <Container className="relative z-10">

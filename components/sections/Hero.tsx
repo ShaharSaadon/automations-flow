@@ -14,39 +14,71 @@ const Hero = () => {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-white via-violet-50/30 to-white">
-      {/* Refined light background */}
-      <div className="absolute inset-0">
-        {/* Soft gradient accent */}
+    <section className="section-base relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Hero atmospheric layer - integrates with page gradient */}
+      <div className="hero-atmosphere" />
+
+      {/* Animated accent orbs - subtle depth */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Primary animated orb */}
         <motion.div
           animate={{
-            opacity: [0.3, 0.5, 0.3],
+            opacity: [0.2, 0.35, 0.2],
             scale: [1, 1.05, 1],
+            rotate: [0, 30, 0],
           }}
           transition={{
-            duration: 10,
+            duration: 20,
             repeat: Infinity,
-            ease: [0.42, 0, 0.58, 1] as const,
+            ease: [0.45, 0, 0.55, 1] as const,
           }}
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[800px] bg-gradient-radial from-violet-200/40 via-purple-100/20 to-transparent blur-3xl"
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[800px] rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(104, 91, 255, 0.06) 0%, rgba(168, 85, 247, 0.04) 40%, transparent 70%)',
+            filter: 'blur(100px)',
+          }}
         />
 
-        {/* Ultra subtle grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.02)_1px,transparent_1px)] bg-[size:100px_100px]" />
+        {/* Secondary animated orb */}
+        <motion.div
+          animate={{
+            opacity: [0.15, 0.28, 0.15],
+            x: [0, 30, 0],
+            y: [0, -30, 0],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: [0.45, 0, 0.55, 1] as const,
+          }}
+          className="absolute bottom-0 right-0 w-[700px] h-[700px] rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(192, 132, 252, 0.05) 0%, rgba(168, 85, 247, 0.03) 50%, transparent 100%)',
+            filter: 'blur(90px)',
+          }}
+        />
+
+        {/* Refined grid overlay */}
+        <div className="absolute inset-0 bg-grid opacity-30" />
       </div>
 
-      {/* Floating particles - subtle */}
+      {/* Floating accent orb */}
       <motion.div
         animate={{
           y: [0, -20, 0],
-          x: [0, 15, 0],
+          x: [0, 12, 0],
+          scale: [1, 1.03, 1],
         }}
         transition={{
-          duration: 20,
+          duration: 22,
           repeat: Infinity,
-          ease: [0.42, 0, 0.58, 1] as const,
+          ease: [0.45, 0, 0.55, 1] as const,
         }}
-        className="absolute top-1/4 right-1/4 w-96 h-96 bg-violet-200/20 rounded-full blur-3xl"
+        className="absolute top-1/4 right-1/4 w-80 h-80 rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, rgba(139, 92, 246, 0.04) 0%, transparent 70%)',
+          filter: 'blur(80px)',
+        }}
       />
 
       <Container className="relative z-10">
@@ -70,7 +102,7 @@ const Hero = () => {
             >
               <Sparkles className="w-3.5 h-3.5 text-violet-600" />
             </motion.div>
-            <span className="text-xs text-violet-900 font-medium tracking-wide">Elite AI Automation Studio</span>
+            <span className="text-xs text-violet-900 font-medium tracking-wide">Boutique AI Automation Consultancy</span>
           </motion.div>
 
           {/* Main headline - clean & elegant */}
@@ -81,7 +113,7 @@ const Hero = () => {
           >
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display text-neutral-900 mb-4 sm:mb-6 tracking-tight leading-[0.95]">
               <span className="block">Automations</span>
-              <span className="block bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-[#685bff] via-[#8b7fff] to-[#acb0ff] bg-clip-text text-transparent">
                 Flow
               </span>
             </h1>
@@ -94,10 +126,11 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg sm:text-xl md:text-2xl text-neutral-600 mb-3 sm:mb-4 max-w-3xl mx-auto leading-relaxed px-4"
           >
-            Boutique AI consultancy crafting{' '}
-            <span className="text-violet-700 font-semibold">
-              enterprise-grade automation
-            </span>
+            Your next{' '}
+            <span className="bg-gradient-to-r from-[#685bff] to-[#acb0ff] bg-clip-text text-transparent font-semibold">
+              10x employee
+            </span>{' '}
+            is an AI agent
           </motion.p>
 
           <motion.p
@@ -106,7 +139,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-sm sm:text-base text-neutral-500 mb-10 sm:mb-12 max-w-2xl mx-auto px-4"
           >
-            Data-driven. Battle-tested. Zero fluff.
+            A boutique AI and automation consultancy. Building the future of AI-powered automation.
           </motion.p>
 
           {/* CTAs - refined */}
@@ -123,10 +156,10 @@ const Hero = () => {
               <Button
                 size="lg"
                 onClick={() => scrollToSection('contact')}
-                className="group relative overflow-hidden bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white border-0 px-10 py-6 font-medium shadow-lg shadow-violet-500/25 hover:shadow-xl hover:shadow-violet-500/30 transition-all"
+                className="group relative overflow-hidden bg-gradient-to-r from-[#685bff] to-[#acb0ff] hover:from-[#5a4ceb] hover:to-[#9ca0f5] text-white border-0 px-10 py-6 font-medium shadow-lg shadow-[#685bff]/25 hover:shadow-xl hover:shadow-[#685bff]/30 transition-all"
               >
                 <span className="relative z-10 flex items-center">
-                  Start Your Project
+                  Book Free AI Audit
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </span>
               </Button>

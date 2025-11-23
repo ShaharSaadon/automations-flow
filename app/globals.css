@@ -4,10 +4,10 @@
 
 @layer base {
   :root {
-    /* Brand Colors */
-    --color-primary: 147 51 234;
-    --color-primary-light: 167 139 250;
-    --color-primary-dark: 126 34 206;
+    /* Brand Colors - Inspired by modern design systems */
+    --color-primary: 104 91 255;
+    --color-primary-light: 172 176 255;
+    --color-primary-dark: 94 75 230;
 
     /* Background Colors */
     --color-bg-primary: 255 255 255;
@@ -50,17 +50,44 @@
 }
 
 @layer components {
-  /* Section Styles */
-  .section-light {
-    @apply bg-white relative overflow-hidden;
+  /* ========================================
+     UNIFIED GRADIENT SYSTEM
+     Professional, seamless backgrounds
+     ======================================== */
+
+  /* Base section - transparent to allow page-level gradient to flow through */
+  .section-base {
+    @apply relative;
   }
 
-  .section-gradient {
-    @apply bg-gradient-to-b from-violet-50/30 via-white to-violet-50/30 relative overflow-hidden;
+  /* Section overlay - subtle atmospheric effects that layer on top of page gradient */
+  .section-overlay-light {
+    @apply relative;
+    background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(248, 247, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
   }
 
-  .section-accent {
-    @apply bg-gradient-to-b from-white via-neutral-50 to-white relative overflow-hidden;
+  .section-overlay-accent {
+    @apply relative;
+    background:
+      radial-gradient(ellipse 100% 50% at 50% 0%, rgba(139, 92, 246, 0.02), transparent),
+      linear-gradient(180deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(250, 248, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+  }
+
+  /* Hero-specific atmospheric layer (sits on top of page gradient) */
+  .hero-atmosphere {
+    @apply absolute inset-0 pointer-events-none;
+    background:
+      radial-gradient(ellipse 120% 100% at 50% 0%, rgba(104, 91, 255, 0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 80% 80% at 20% 100%, rgba(168, 85, 247, 0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 80% 80% at 80% 100%, rgba(192, 132, 252, 0.04) 0%, transparent 60%);
   }
 
   /* Card Styles */
@@ -83,7 +110,7 @@
 
   /* Text Gradient */
   .text-gradient {
-    @apply bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-[#685bff] via-[#8b7fff] to-[#acb0ff] bg-clip-text text-transparent;
   }
 
   /* Icon Container */
@@ -98,16 +125,49 @@
 }
 
 @layer utilities {
-  /* Background Patterns */
+  /* ========================================
+     PAGE-LEVEL GRADIENT BACKGROUND
+     Flows seamlessly across all sections
+     ======================================== */
+
+  .page-gradient {
+    background:
+      /* Subtle gradient mesh for depth */
+      radial-gradient(at 10% 20%, rgba(104, 91, 255, 0.04) 0px, transparent 50%),
+      radial-gradient(at 90% 30%, rgba(168, 85, 247, 0.03) 0px, transparent 50%),
+      radial-gradient(at 50% 60%, rgba(139, 92, 246, 0.02) 0px, transparent 50%),
+      radial-gradient(at 20% 80%, rgba(192, 132, 252, 0.03) 0px, transparent 50%),
+      /* Base gradient flow */
+      linear-gradient(180deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(252, 250, 255, 0.5) 15%,
+        rgba(248, 247, 255, 0.6) 30%,
+        rgba(250, 248, 255, 0.5) 50%,
+        rgba(248, 247, 255, 0.6) 70%,
+        rgba(252, 250, 255, 0.5) 85%,
+        rgba(255, 255, 255, 1) 100%
+      );
+  }
+
+  /* Background Patterns - Refined */
   .bg-grid {
-    background-image: linear-gradient(rgba(139,92,246,0.02) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(139,92,246,0.02) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(139,92,246,0.015) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(139,92,246,0.015) 1px, transparent 1px);
     background-size: 100px 100px;
   }
 
   .bg-dot-pattern {
-    background-image: radial-gradient(rgba(139,92,246,0.1) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(139,92,246,0.08) 1px, transparent 1px);
     background-size: 20px 20px;
+  }
+
+  /* Atmospheric mesh overlays - for layering */
+  .bg-gradient-mesh {
+    background:
+      radial-gradient(at 0% 0%, rgba(104, 91, 255, 0.03) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.025) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.02) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(192, 132, 252, 0.025) 0px, transparent 50%);
   }
 
   /* Glow Effects */

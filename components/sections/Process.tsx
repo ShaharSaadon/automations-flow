@@ -61,11 +61,10 @@ const processSteps = [
 
 const Process = () => {
   return (
-    <section id="process" className="py-20 md:py-32 section-accent border-t border-violet-100">
-      {/* Subtle background decoration */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-grid opacity-50" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-violet-100/30 to-transparent rounded-full blur-3xl" />
+    <section id="process" className="py-20 md:py-32 section-overlay-accent border-t border-violet-100/60">
+      {/* Subtle background decoration - layers on page gradient */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-grid opacity-25" />
       </div>
 
       <Container className="relative z-10">

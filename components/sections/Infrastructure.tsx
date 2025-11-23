@@ -44,12 +44,10 @@ const infrastructure = [
 
 const Infrastructure = () => {
   return (
-    <section className="py-20 md:py-32 section-accent border-t border-violet-100">
-      {/* Background decoration */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-grid opacity-50" />
-        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-violet-100/40 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-100/40 rounded-full blur-3xl" />
+    <section className="py-20 md:py-32 section-overlay-accent border-t border-violet-100/60">
+      {/* Background decoration - layers on page gradient */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-grid opacity-25" />
       </div>
 
       <Container className="relative z-10">
