@@ -7,13 +7,14 @@ import { Quote } from 'lucide-react'
 const testimonials = [
   {
     id: 1,
+    company: 'Windmill Growth',
+    companyInfo: 'Digital Marketing Agency | Growth Partners for B2B Companies',
+    background: 'Founded by industry veterans who departed from traditional agency models to build a data-driven growth consultancy, Windmill Growth specializes in helping B2B companies scale their outbound sales through intelligent automation and personalized outreach.',
+    logo: '/assets/profile-icons/windmill-growth-logo.jpeg',
     amount: '$42,000',
     amountLabel: 'Revenue Generated',
     description: 'The lead generation engine we built for Windmill Growth combined deep scraping, custom ICP targeting, and intelligent email personalization. We expanded their lead universe with a scraper tailored to their exact ideal customer profile, enriched every contact with unique data points, and generated hyper-personalized outreach sequences using top-tier email infrastructure. The result: a sharp increase in meetings, stable sales pipeline, and real revenue growth.',
     quote: 'The AI lead generation system with custom email campaigns and intelligent data enrichment delivered extraordinary results. This system completely transformed how we approach outbound sales — it\'s a game changer.',
-    name: 'Ben Buaron',
-    title: 'CEO, Windmill Growth',
-    initials: 'BB',
     metrics: [
       { value: '35', label: 'Meetings', color: 'violet' },
       { value: '$42K', label: 'Revenue', color: 'emerald' },
@@ -22,13 +23,14 @@ const testimonials = [
   },
   {
     id: 2,
+    company: 'SaleUp',
+    companyInfo: 'Sales Automation Platform | B2B Lead Management',
+    background: 'A fast-growing sales enablement company that departed from manual lead routing to build an automated, scalable infrastructure for managing high-volume lead flow and sales operations.',
+    logo: '/assets/profile-icons/sale-up-logo.png',
     amount: 'Automated Lead Routing',
     amountLabel: 'For Scale',
     description: 'SaleUp came to us after their Make system couldn\'t handle the volume of leads and automations. We migrated the entire system to n8n, built a central Router managing all lead flow, added notification mechanisms, controls, logs, and modules for bot building — all in a modern, fast, and stable infrastructure. The result: a new system that saves hours of operations, reduces errors, and generates hot leads consistently.',
     quote: 'The new system eliminated all incidents and saved us countless hours every week. Lead response time improved dramatically.',
-    name: 'SaleUp Team',
-    title: 'Operations Lead',
-    initials: 'SU',
     metrics: [
       { value: '0', label: 'Incidents', color: 'emerald' },
       { value: '15+', label: 'Hours Saved/Week', color: 'violet' },
@@ -37,13 +39,14 @@ const testimonials = [
   },
   {
     id: 3,
+    company: 'SuperPower',
+    companyInfo: 'Community Management Platform | Kibbutz Digital Solutions',
+    background: 'A community-focused technology company that departed from traditional communication methods to build modern, automated systems for managing large-scale community interactions and member engagement.',
+    logo: '/assets/profile-icons/super-power-logo.png',
     amount: 'WhatsApp System',
     amountLabel: 'Community Management',
     description: 'Kibbo needed a way to manage dozens of daily interactions with community members — without overload and chaos. We built them a complete WhatsApp system: message routing, smart tags, management interfaces, reminders, registration processes, student communication, and real-time updates. The system manages all kibbutz communication automatically, saves hours for the team, and elevates service quality.',
     quote: 'This WhatsApp system handles all our community communication seamlessly. It\'s completely automated and saves us so much time.',
-    name: 'Kibbo Team',
-    title: 'SuperPower Community',
-    initials: 'KB',
     metrics: [
       { value: '100+', label: 'Active Users', color: 'violet' },
       { value: '20+', label: 'Hours Saved/Month', color: 'emerald' },
@@ -54,7 +57,7 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section className="py-20 md:py-32 section-overlay-light">
+    <section className="py-20 md:py-32 section-overlay-light border-t border-violet-100/60">
       {/* Subtle background decoration - layers on page gradient */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-dot-pattern opacity-15" />
@@ -96,6 +99,30 @@ const Testimonials = () => {
                 </div>
 
                 <div className="card border-violet-200 shadow-soft-lg p-6 sm:p-8 md:p-10">
+                  {/* Company Info Header */}
+                  <div className="mb-4 sm:mb-5">
+                    <div className="flex items-center space-x-3 mb-2">
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-lg border-2 border-violet-200 flex items-center justify-center shadow-md p-2">
+                        <img
+                          src={testimonial.logo}
+                          alt={testimonial.company}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      <div>
+                        <p className="font-bold text-neutral-900 text-lg sm:text-xl">
+                          {testimonial.company}
+                        </p>
+                        <p className="text-xs sm:text-sm text-violet-600 font-medium">
+                          {testimonial.companyInfo}
+                        </p>
+                      </div>
+                    </div>
+                    <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed italic border-l-2 border-violet-200 pl-3">
+                      {testimonial.background}
+                    </p>
+                  </div>
+
                   {/* Badge */}
                   <div className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-300 rounded-full mb-4 sm:mb-6 shadow-md">
                     <span className="text-base sm:text-lg md:text-xl font-black bg-gradient-to-r from-violet-600 to-purple-700 bg-clip-text text-transparent">
@@ -116,38 +143,20 @@ const Testimonials = () => {
                     "{testimonial.quote}"
                   </blockquote>
 
-                  <div className="flex items-center justify-between flex-wrap gap-4 sm:gap-6">
-                    <div className="flex items-center space-x-3 sm:space-x-4">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-600 to-violet-600 rounded-full flex items-center justify-center shadow-lg">
-                        <span className="text-white font-bold text-sm sm:text-base">
-                          {testimonial.initials}
-                        </span>
-                      </div>
-                      <div>
-                        <p className="font-bold text-neutral-900 text-sm sm:text-base">
-                          {testimonial.name}
+                  {/* Key Metrics */}
+                  <div className="flex items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm pt-4 border-t border-violet-100">
+                    {testimonial.metrics.map((metric, idx) => (
+                      <div key={idx} className="text-center">
+                        <p className={`font-bold text-lg sm:text-xl ${
+                          metric.color === 'emerald' ? 'text-emerald-600' : 'text-violet-700'
+                        }`}>
+                          {metric.value}
                         </p>
-                        <p className="text-xs sm:text-sm text-neutral-600">
-                          {testimonial.title}
+                        <p className="text-neutral-500 text-[10px] sm:text-xs whitespace-nowrap">
+                          {metric.label}
                         </p>
                       </div>
-                    </div>
-
-                    {/* Key Metrics */}
-                    <div className="flex items-center gap-3 sm:gap-5 text-xs sm:text-sm">
-                      {testimonial.metrics.map((metric, idx) => (
-                        <div key={idx}>
-                          <p className={`font-bold text-sm sm:text-base ${
-                            metric.color === 'emerald' ? 'text-emerald-600' : 'text-violet-700'
-                          }`}>
-                            {metric.value}
-                          </p>
-                          <p className="text-neutral-500 text-[10px] sm:text-xs whitespace-nowrap">
-                            {metric.label}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
+                    ))}
                   </div>
                 </div>
 
