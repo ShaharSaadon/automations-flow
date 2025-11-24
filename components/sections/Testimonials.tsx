@@ -4,6 +4,54 @@ import { motion } from 'framer-motion'
 import Container from '../ui/Container'
 import { Quote } from 'lucide-react'
 
+const testimonials = [
+  {
+    id: 1,
+    amount: '$42,000',
+    amountLabel: 'Revenue Generated',
+    description: 'The lead generation engine we built for Windmill Growth combined deep scraping, custom ICP targeting, and intelligent email personalization. We expanded their lead universe with a scraper tailored to their exact ideal customer profile, enriched every contact with unique data points, and generated hyper-personalized outreach sequences using top-tier email infrastructure. The result: a sharp increase in meetings, stable sales pipeline, and real revenue growth.',
+    quote: 'The AI lead generation system with custom email campaigns and intelligent data enrichment delivered extraordinary results. This system completely transformed how we approach outbound sales — it\'s a game changer.',
+    name: 'Ben Buaron',
+    title: 'CEO, Windmill Growth',
+    initials: 'BB',
+    metrics: [
+      { value: '35', label: 'Meetings', color: 'violet' },
+      { value: '$42K', label: 'Revenue', color: 'emerald' },
+      { value: '100%', label: 'Automated', color: 'violet' },
+    ],
+  },
+  {
+    id: 2,
+    amount: 'Automated Lead Routing',
+    amountLabel: 'For Scale',
+    description: 'SaleUp came to us after their Make system couldn\'t handle the volume of leads and automations. We migrated the entire system to n8n, built a central Router managing all lead flow, added notification mechanisms, controls, logs, and modules for bot building — all in a modern, fast, and stable infrastructure. The result: a new system that saves hours of operations, reduces errors, and generates hot leads consistently.',
+    quote: 'The new system eliminated all incidents and saved us countless hours every week. Lead response time improved dramatically.',
+    name: 'SaleUp Team',
+    title: 'Operations Lead',
+    initials: 'SU',
+    metrics: [
+      { value: '0', label: 'Incidents', color: 'emerald' },
+      { value: '15+', label: 'Hours Saved/Week', color: 'violet' },
+      { value: '100%', label: 'Uptime', color: 'violet' },
+    ],
+  },
+  {
+    id: 3,
+    amount: 'WhatsApp System',
+    amountLabel: 'Community Management',
+    description: 'Kibbo needed a way to manage dozens of daily interactions with community members — without overload and chaos. We built them a complete WhatsApp system: message routing, smart tags, management interfaces, reminders, registration processes, student communication, and real-time updates. The system manages all kibbutz communication automatically, saves hours for the team, and elevates service quality.',
+    quote: 'This WhatsApp system handles all our community communication seamlessly. It\'s completely automated and saves us so much time.',
+    name: 'Kibbo Team',
+    title: 'SuperPower Community',
+    initials: 'KB',
+    metrics: [
+      { value: '100+', label: 'Active Users', color: 'violet' },
+      { value: '20+', label: 'Hours Saved/Month', color: 'emerald' },
+      { value: '100%', label: 'Centralized', color: 'violet' },
+    ],
+  },
+];
+
 const Testimonials = () => {
   return (
     <section className="py-20 md:py-32 section-overlay-light">
@@ -20,7 +68,7 @@ const Testimonials = () => {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto px-4"
         >
-          <div className="text-center mb-8 sm:mb-12">
+          <div className="text-center mb-12 sm:mb-16">
             <div className="badge mb-4 sm:mb-6 shadow-sm">
               <span>Client Success</span>
             </div>
@@ -32,81 +80,83 @@ const Testimonials = () => {
             </p>
           </div>
 
-          <div className="relative">
-            <div className="absolute top-0 left-0 -translate-x-2 sm:-translate-x-4 -translate-y-2 sm:-translate-y-4">
-              <Quote className="w-12 h-12 sm:w-16 sm:h-16 text-violet-200" />
-            </div>
+          {/* Testimonials Grid */}
+          <div className="space-y-8 sm:space-y-12">
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className="relative"
+              >
+                <div className="absolute top-0 left-0 -translate-x-2 sm:-translate-x-4 -translate-y-2 sm:-translate-y-4">
+                  <Quote className="w-10 h-10 sm:w-12 sm:h-12 text-violet-200" />
+                </div>
 
-            <div className="card border-violet-200 shadow-soft-lg p-6 sm:p-8 md:p-12">
-              {/* Dollar Amount Badge */}
-              <div className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-emerald-50 to-green-50 border-2 border-emerald-300 rounded-full mb-4 sm:mb-6 shadow-md">
-                <span className="text-xl sm:text-2xl font-black bg-gradient-to-r from-emerald-600 to-green-700 bg-clip-text text-transparent">$42,000</span>
-                <span className="text-xs sm:text-sm text-neutral-700 font-semibold">Revenue Generated</span>
-              </div>
-
-              <blockquote className="text-lg sm:text-xl md:text-2xl text-neutral-900 leading-relaxed mb-6 sm:mb-8">
-                "The AI lead generation system with{' '}
-                <span className="text-violet-700 font-semibold">custom email campaigns and intelligent data enrichment</span>{' '}
-                delivered extraordinary results. We closed 35 high-value sales meetings and generated{' '}
-                <span className="text-emerald-600 font-bold">$42,000 in revenue.</span>{' '}
-                This system completely transformed how we approach outbound sales — it's a game changer."
-              </blockquote>
-
-              <div className="flex items-center justify-between flex-wrap gap-4 sm:gap-6">
-                <div className="flex items-center space-x-3 sm:space-x-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-600 to-violet-600 rounded-full flex items-center justify-center shadow-lg">
-                    <span className="text-white font-bold text-base sm:text-lg">BB</span>
+                <div className="card border-violet-200 shadow-soft-lg p-6 sm:p-8 md:p-10">
+                  {/* Badge */}
+                  <div className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-violet-50 to-purple-50 border-2 border-violet-300 rounded-full mb-4 sm:mb-6 shadow-md">
+                    <span className="text-base sm:text-lg md:text-xl font-black bg-gradient-to-r from-violet-600 to-purple-700 bg-clip-text text-transparent">
+                      {testimonial.amount}
+                    </span>
+                    <span className="text-xs sm:text-sm text-neutral-700 font-semibold">
+                      {testimonial.amountLabel}
+                    </span>
                   </div>
-                  <div>
-                    <p className="font-bold text-neutral-900 text-sm sm:text-base">Ben Buaron</p>
-                    <p className="text-xs sm:text-sm text-neutral-600">CEO, Windmill Growth</p>
+
+                  {/* Description */}
+                  <p className="text-sm sm:text-base md:text-lg text-neutral-700 leading-relaxed mb-4 sm:mb-6">
+                    {testimonial.description}
+                  </p>
+
+                  {/* Quote */}
+                  <blockquote className="text-base sm:text-lg md:text-xl text-neutral-900 leading-relaxed mb-6 sm:mb-8 italic border-l-4 border-violet-300 pl-4">
+                    "{testimonial.quote}"
+                  </blockquote>
+
+                  <div className="flex items-center justify-between flex-wrap gap-4 sm:gap-6">
+                    <div className="flex items-center space-x-3 sm:space-x-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-600 to-violet-600 rounded-full flex items-center justify-center shadow-lg">
+                        <span className="text-white font-bold text-sm sm:text-base">
+                          {testimonial.initials}
+                        </span>
+                      </div>
+                      <div>
+                        <p className="font-bold text-neutral-900 text-sm sm:text-base">
+                          {testimonial.name}
+                        </p>
+                        <p className="text-xs sm:text-sm text-neutral-600">
+                          {testimonial.title}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Key Metrics */}
+                    <div className="flex items-center gap-3 sm:gap-5 text-xs sm:text-sm">
+                      {testimonial.metrics.map((metric, idx) => (
+                        <div key={idx}>
+                          <p className={`font-bold text-sm sm:text-base ${
+                            metric.color === 'emerald' ? 'text-emerald-600' : 'text-violet-700'
+                          }`}>
+                            {metric.value}
+                          </p>
+                          <p className="text-neutral-500 text-[10px] sm:text-xs whitespace-nowrap">
+                            {metric.label}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
-                {/* Key Metrics */}
-                <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm">
-                  <div>
-                    <p className="text-emerald-600 font-bold text-sm sm:text-base">$42K</p>
-                    <p className="text-neutral-500 text-[10px] sm:text-xs">Revenue</p>
-                  </div>
-                  <div>
-                    <p className="text-violet-700 font-bold text-sm sm:text-base">35</p>
-                    <p className="text-neutral-500 text-[10px] sm:text-xs">Meetings</p>
-                  </div>
-                  <div>
-                    <p className="text-violet-700 font-bold text-sm sm:text-base">100%</p>
-                    <p className="text-neutral-500 text-[10px] sm:text-xs">AI-Powered</p>
-                  </div>
+                <div className="absolute bottom-0 right-0 translate-x-2 sm:translate-x-4 translate-y-2 sm:translate-y-4 rotate-180">
+                  <Quote className="w-10 h-10 sm:w-12 sm:h-12 text-violet-200" />
                 </div>
-              </div>
-            </div>
-
-            <div className="absolute bottom-0 right-0 translate-x-2 sm:translate-x-4 translate-y-2 sm:translate-y-4 rotate-180">
-              <Quote className="w-12 h-12 sm:w-16 sm:h-16 text-violet-200" />
-            </div>
+              </motion.div>
+            ))}
           </div>
-
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-12 sm:mt-16 grid grid-cols-3 gap-4 sm:gap-8 text-center"
-          >
-            <div>
-              <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-violet-700 mb-1 sm:mb-2">100%</p>
-              <p className="text-xs sm:text-sm text-neutral-600">Client Satisfaction</p>
-            </div>
-            <div>
-              <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-violet-700 mb-1 sm:mb-2">99.9%</p>
-              <p className="text-xs sm:text-sm text-neutral-600">System Uptime</p>
-            </div>
-            <div>
-              <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-violet-700 mb-1 sm:mb-2">24/7</p>
-              <p className="text-xs sm:text-sm text-neutral-600">Monitoring</p>
-            </div>
-          </motion.div>
         </motion.div>
       </Container>
     </section>

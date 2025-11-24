@@ -1,42 +1,49 @@
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
-import Container from '../ui/Container'
-import AnimatedCounter from '../ui/AnimatedCounter'
-import { TrendingUp, Workflow, Zap, Shield } from 'lucide-react'
+import { motion } from 'framer-motion';
+import Container from '../ui/Container';
+import AnimatedCounter from '../ui/AnimatedCounter';
+import { Activity, Bot, Zap, Timer } from 'lucide-react';
 
 const stats = [
   {
-    icon: Workflow,
+    icon: Bot,
     value: 50,
     suffix: '+',
     decimals: 0,
-    label: 'AI Agents Deployed',
-    description: 'Production systems',
+    label: 'Active AI Agents',
+    description: 'Deployed in production',
+    unit: 'agents',
   },
   {
     icon: Zap,
-    value: 100,
+    value: 350,
     suffix: 'K+',
+    decimals: 0,
     label: 'Messages Processed',
     description: 'Monthly volume',
+    unit: 'messages',
   },
   {
-    icon: TrendingUp,
-    value: 99.8,
+    icon: Activity,
+    value: 99.9,
     suffix: '%',
     decimals: 1,
     label: 'System Uptime',
-    description: 'Reliability',
+    description: 'Enterprise reliability',
+    unit: 'uptime',
   },
   {
-    icon: Shield,
-    value: 170,
-    suffix: '%',
-    label: 'Average ROI',
-    description: 'Client returns',
+    icon: Timer,
+    value: 7,
+    prefix: '<',
+    suffix: 's',
+    decimals: 0,
+    label: 'Avg. Response Time',
+    description: 'Lightning-fast processing',
+    unit: 'seconds',
   },
-]
+];
 
 const Stats = () => {
   return (
@@ -46,10 +53,26 @@ const Stats = () => {
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-200/50 to-transparent pointer-events-none" />
 
       <Container className="relative z-10">
+        {/* Section Header - Scalability Proof */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12 md:mb-16 px-4"
+        >
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-display text-neutral-900 mb-4">
+            Engineered for <span className="text-[#685bff]">Scale</span>
+          </h2>
+          <p className="text-neutral-500 text-sm md:text-base lg:text-lg max-w-2xl mx-auto">
+            Our infrastructure is designed to handle enterprise workloads with bank-grade security and zero downtime.
+          </p>
+        </motion.div>
+
         {/* Stats Grid - Clean & Minimal */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {stats.map((stat, index) => {
-            const Icon = stat.icon
+            const Icon = stat.icon;
             return (
               <motion.div
                 key={stat.label}
@@ -66,6 +89,9 @@ const Stats = () => {
                 >
                   <Icon className="w-5 h-5 md:w-6 md:h-6 text-violet-600" />
                 </motion.div>
+                <div className="text-xs md:text-sm text-violet-600 font-medium mb-3 px-2">
+                  {stat.label}
+                </div>
                 <div className="text-3xl md:text-4xl lg:text-5xl font-display text-neutral-900 mb-2 group-hover:text-violet-700 transition-colors">
                   <AnimatedCounter
                     value={stat.value}
@@ -74,31 +100,16 @@ const Stats = () => {
                     duration={2.5}
                   />
                 </div>
-                <div className="text-xs md:text-sm text-violet-600 font-medium mb-1 px-2">{stat.label}</div>
-                <div className="text-[10px] md:text-xs text-neutral-500 px-2">{stat.description}</div>
+                <div className="text-[10px] md:text-xs text-neutral-500 px-2">
+                  {stat.description}
+                </div>
               </motion.div>
-            )
+            );
           })}
         </div>
-
-        {/* Social Proof - Clean */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center mt-16 md:mt-20 px-4"
-        >
-          <p className="text-violet-700 font-semibold text-sm md:text-base mb-2">
-            Driven By Data, Proven By Results
-          </p>
-          <p className="text-neutral-500 text-xs md:text-sm max-w-2xl mx-auto">
-            Trusted by industry leaders in E-commerce, SaaS, Healthcare, and Professional Services
-          </p>
-        </motion.div>
       </Container>
     </section>
-  )
-}
+  );
+};
 
-export default Stats
+export default Stats;
