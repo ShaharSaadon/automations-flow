@@ -21,7 +21,9 @@
       "Bash(git branch:*)",
       "Bash(git push:*)",
       "WebFetch(domain:windmillgrowth.com)",
-      "Bash(timeout 5 bash:*)"
+      "Bash(timeout 5 bash:*)",
+      "Bash(nul)",
+      "Bash(timeout:*)"
     ],
     "deny": [],
     "ask": []

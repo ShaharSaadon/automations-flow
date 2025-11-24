@@ -1,52 +1,83 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState } from 'react'
 import Container from '../ui/Container'
-import { cn } from '@/lib/utils'
+import { Code2 } from 'lucide-react'
 
-const techCategories = {
-  Core: [
-    { name: 'n8n', purpose: 'Workflow orchestration' },
-    { name: 'Node.js', purpose: 'Backend runtime' },
-    { name: 'Python', purpose: 'Data processing' },
-    { name: 'LangChain', purpose: 'AI orchestration' },
-    { name: 'LangGraph', purpose: 'Agent workflows' },
-  ],
-  Databases: [
-    { name: 'MongoDB', purpose: 'Document store' },
-    { name: 'Supabase', purpose: 'PostgreSQL + auth' },
-    { name: 'PostgreSQL', purpose: 'Relational data' },
-    { name: 'Airtable', purpose: 'Flexible data' },
-  ],
-  'AI Models': [
-    { name: 'OpenAI', purpose: 'GPT models' },
-    { name: 'Gemini', purpose: 'Google AI' },
-    { name: 'Anthropic', purpose: 'Claude models' },
-    { name: 'OpenRouter', purpose: 'Multi-model access' },
-  ],
-  Integrations: [
-    { name: 'Monday.com', purpose: 'Project management' },
-    { name: 'HubSpot', purpose: 'CRM platform' },
-    { name: 'Salesforce', purpose: 'Enterprise CRM' },
-  ],
-  WhatsApp: [
-    { name: 'GreenAPI', purpose: 'WhatsApp Business' },
-    { name: 'Whapi', purpose: 'Cloud messaging' },
-    { name: 'Twilio', purpose: 'Communication API' },
-    { name: 'WhatsApp Cloud', purpose: 'Official API' },
-  ],
+// Technology logos - combined into 2 rows for optimal height
+const topRowTechnologies = [
+  { name: 'n8n', logo: 'https://cdn.simpleicons.org/n8n/EA4B71' },
+  { name: 'Node.js', logo: 'https://cdn.simpleicons.org/nodedotjs/339933' },
+  { name: 'Python', logo: 'https://cdn.simpleicons.org/python/3776AB' },
+  { name: 'LangChain', logo: 'https://cdn.simpleicons.org/langchain/1C3C3C' },
+  { name: 'LangGraph', logo: 'https://cdn.simpleicons.org/langchain/8A2BE2' },
+  { name: 'MongoDB', logo: 'https://cdn.simpleicons.org/mongodb/47A248' },
+  { name: 'Supabase', logo: 'https://cdn.simpleicons.org/supabase/3FCF8E' },
+  { name: 'PostgreSQL', logo: 'https://cdn.simpleicons.org/postgresql/4169E1' },
+  { name: 'Airtable', logo: 'https://cdn.simpleicons.org/airtable/18BFFF' },
+  { name: 'OpenAI', logo: 'https://cdn.simpleicons.org/openai/412991' },
+  { name: 'Gemini', logo: 'https://cdn.simpleicons.org/googlegemini/4285F4' },
+  { name: 'Anthropic', logo: 'https://cdn.simpleicons.org/anthropic/D4A574' },
+]
+
+const bottomRowTechnologies = [
+  { name: 'Monday.com', logo: 'https://cdn.simpleicons.org/monday/FF3D57' },
+  { name: 'HubSpot', logo: 'https://cdn.simpleicons.org/hubspot/FF7A59' },
+  { name: 'Salesforce', logo: 'https://cdn.simpleicons.org/salesforce/00A1E0' },
+  { name: 'WhatsApp', logo: 'https://cdn.simpleicons.org/whatsapp/25D366' },
+  { name: 'Twilio', logo: 'https://cdn.simpleicons.org/twilio/F22F46' },
+  { name: 'OpenRouter', logo: 'https://cdn.simpleicons.org/openrouter/6366F1' },
+  { name: 'Docker', logo: 'https://cdn.simpleicons.org/docker/2496ED' },
+  { name: 'TypeScript', logo: 'https://cdn.simpleicons.org/typescript/3178C6' },
+  { name: 'React', logo: 'https://cdn.simpleicons.org/react/61DAFB' },
+]
+
+// Infinite scrolling logo row component
+const LogoRow = ({ logos, direction = 'left', speed = 40 }: { logos: typeof topRowTechnologies; direction?: 'left' | 'right'; speed?: number }) => {
+  // Duplicate logos for seamless loop
+  const duplicatedLogos = [...logos, ...logos, ...logos]
+
+  return (
+    <div className="relative overflow-hidden py-4">
+      <motion.div
+        className="flex space-x-8 sm:space-x-12"
+        animate={{
+          x: direction === 'left' ? [0, -100 / 3 + '%'] : [-100 / 3 + '%', 0],
+        }}
+        transition={{
+          x: {
+            repeat: Infinity,
+            repeatType: 'loop',
+            duration: speed,
+            ease: 'linear',
+          },
+        }}
+      >
+        {duplicatedLogos.map((tech, index) => (
+          <div
+            key={`${tech.name}-${index}`}
+            className="flex-shrink-0 group"
+          >
+            <div className="flex items-center justify-center w-24 sm:w-28 h-24 sm:h-28 bg-white rounded-2xl border-2 border-violet-100 hover:border-violet-400 transition-all duration-300 hover:shadow-xl hover:shadow-violet-200/60 hover:scale-105 p-5">
+              <img
+                src={tech.logo}
+                alt={tech.name}
+                className="w-12 h-12 sm:w-14 sm:h-14 object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 filter group-hover:drop-shadow-lg"
+              />
+            </div>
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  )
 }
 
 const TechStack = () => {
-  const [activeTab, setActiveTab] = useState<keyof typeof techCategories>('Core')
-
   return (
-    <section id="technology" className="py-20 md:py-32 section-light border-y border-violet-100">
+    <section id="technology" className="py-16 md:py-24 section-light border-t border-violet-100/60">
       {/* Background decoration */}
-      <div className="absolute inset-0">
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-violet-100/40 rounded-full blur-3xl" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-100/40 rounded-full blur-3xl" />
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-grid opacity-20" />
       </div>
 
       <Container className="relative z-10">
@@ -55,10 +86,11 @@ const TechStack = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 sm:mb-16 px-4"
+          className="text-center mb-10 sm:mb-12 px-4"
         >
-          <div className="badge mb-4 sm:mb-6 shadow-sm">
-            <span>Technology Stack</span>
+          <div className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 bg-white border border-violet-200 rounded-full mb-4 sm:mb-6 shadow-sm">
+            <Code2 className="w-3.5 h-3.5 text-violet-600" />
+            <span className="text-[10px] sm:text-xs text-violet-700 font-medium tracking-wider uppercase">Technology Stack</span>
           </div>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-display text-neutral-900 mb-3 sm:mb-4 tracking-tight">
             <span className="text-gradient">
@@ -70,56 +102,31 @@ const TechStack = () => {
             Enterprise-grade tools and frameworks powering mission-critical automation
           </p>
         </motion.div>
+      </Container>
 
-        {/* Tabs */}
+      {/* Infinite scrolling logo rows - only 2 rows for compact design */}
+      <div className="space-y-6 sm:space-y-8">
+        {/* Row 1: Top technologies - Left scroll */}
+        <LogoRow logos={topRowTechnologies} direction="left" speed={40} />
+
+        {/* Row 2: Bottom technologies - Right scroll */}
+        <LogoRow logos={bottomRowTechnologies} direction="right" speed={42} />
+      </div>
+
+      {/* Bottom CTA */}
+      <Container className="relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex flex-wrap justify-center gap-3 mb-8 sm:mb-12 px-4"
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-10 sm:mt-12 text-center px-4"
         >
-          {Object.keys(techCategories).map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveTab(category as keyof typeof techCategories)}
-              className={cn(
-                'px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-bold transition-all duration-300 text-sm sm:text-base',
-                activeTab === category
-                  ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-violet scale-105'
-                  : 'bg-white text-neutral-600 hover:text-violet-700 border border-violet-200 hover:border-violet-300 hover:bg-violet-50'
-              )}
-            >
-              {category}
-            </button>
-          ))}
-        </motion.div>
-
-        {/* Tech grid */}
-        <motion.div
-          key={activeTab}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-w-6xl mx-auto px-4 sm:px-0"
-        >
-          {techCategories[activeTab].map((tech, index) => (
-            <motion.div
-              key={tech.name}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
-              className="card card-hover group"
-            >
-              <div className="flex items-start justify-between mb-2">
-                <h3 className="text-base sm:text-lg font-bold text-neutral-900 group-hover:text-violet-700 transition-colors">
-                  {tech.name}
-                </h3>
-                <div className="w-2 h-2 bg-violet-500 rounded-full opacity-0 group-hover:opacity-100 group-hover:glow-violet transition-all" />
-              </div>
-              <p className="text-xs sm:text-sm text-neutral-600">{tech.purpose}</p>
-            </motion.div>
-          ))}
+          <div className="inline-block px-8 py-4 bg-white border border-violet-200 rounded-2xl shadow-sm">
+            <p className="text-neutral-600 text-sm sm:text-base">
+              <span className="text-violet-700 font-bold">20+ technologies</span> in our stack
+            </p>
+          </div>
         </motion.div>
       </Container>
     </section>

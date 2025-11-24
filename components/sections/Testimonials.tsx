@@ -39,43 +39,43 @@ const Testimonials = () => {
 
             <div className="card border-violet-200 shadow-soft-lg p-6 sm:p-8 md:p-12">
               {/* Dollar Amount Badge */}
-              <div className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-green-50 to-violet-50 border border-green-200 rounded-full mb-4 sm:mb-6">
-                <span className="text-xl sm:text-2xl font-black bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">$85,000+</span>
-                <span className="text-xs sm:text-sm text-neutral-700">Saved in Manual Labor Costs</span>
+              <div className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-emerald-50 to-green-50 border-2 border-emerald-300 rounded-full mb-4 sm:mb-6 shadow-md">
+                <span className="text-xl sm:text-2xl font-black bg-gradient-to-r from-emerald-600 to-green-700 bg-clip-text text-transparent">$42,000</span>
+                <span className="text-xs sm:text-sm text-neutral-700 font-semibold">Revenue Generated</span>
               </div>
 
               <blockquote className="text-lg sm:text-xl md:text-2xl text-neutral-900 leading-relaxed mb-6 sm:mb-8">
-                "Automations Flow built our entire community communication system on WhatsApp —{' '}
-                <span className="text-violet-700 font-semibold">modular, scalable, and ready for future AI extensions.</span>{' '}
-                We're now processing 500+ member interactions daily with zero manual intervention.
-                <span className="text-green-600 font-bold"> This has saved us over $85,000 in operational costs.</span>{' '}
-                This works."
+                "The AI lead generation system with{' '}
+                <span className="text-violet-700 font-semibold">custom email campaigns and intelligent data enrichment</span>{' '}
+                delivered extraordinary results. We closed 35 high-value sales meetings and generated{' '}
+                <span className="text-emerald-600 font-bold">$42,000 in revenue.</span>{' '}
+                This system completely transformed how we approach outbound sales — it's a game changer."
               </blockquote>
 
               <div className="flex items-center justify-between flex-wrap gap-4 sm:gap-6">
                 <div className="flex items-center space-x-3 sm:space-x-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-violet-600 to-purple-600 rounded-full flex items-center justify-center shadow-sm">
-                    <span className="text-white font-bold text-base sm:text-lg">SK</span>
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-600 to-violet-600 rounded-full flex items-center justify-center shadow-lg">
+                    <span className="text-white font-bold text-base sm:text-lg">BB</span>
                   </div>
                   <div>
-                    <p className="font-bold text-neutral-900 text-sm sm:text-base">SuperPower</p>
-                    <p className="text-xs sm:text-sm text-neutral-600">Kibbo Project — WhatsApp Community System</p>
+                    <p className="font-bold text-neutral-900 text-sm sm:text-base">Ben Buaron</p>
+                    <p className="text-xs sm:text-sm text-neutral-600">CEO, Windmill Growth</p>
                   </div>
                 </div>
 
                 {/* Key Metrics */}
                 <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm">
                   <div>
-                    <p className="text-violet-700 font-bold text-sm sm:text-base">500+</p>
-                    <p className="text-neutral-500 text-[10px] sm:text-xs">Daily Interactions</p>
+                    <p className="text-emerald-600 font-bold text-sm sm:text-base">$42K</p>
+                    <p className="text-neutral-500 text-[10px] sm:text-xs">Revenue</p>
+                  </div>
+                  <div>
+                    <p className="text-violet-700 font-bold text-sm sm:text-base">35</p>
+                    <p className="text-neutral-500 text-[10px] sm:text-xs">Meetings</p>
                   </div>
                   <div>
                     <p className="text-violet-700 font-bold text-sm sm:text-base">100%</p>
-                    <p className="text-neutral-500 text-[10px] sm:text-xs">Automated</p>
-                  </div>
-                  <div>
-                    <p className="text-violet-700 font-bold text-sm sm:text-base">200hrs</p>
-                    <p className="text-neutral-500 text-[10px] sm:text-xs">Saved/Month</p>
+                    <p className="text-neutral-500 text-[10px] sm:text-xs">AI-Powered</p>
                   </div>
                 </div>
               </div>

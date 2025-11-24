@@ -7,17 +7,19 @@ import { TrendingUp, Clock, DollarSign, Users, MessageSquare, Zap, ChevronLeft, 
 
 const caseStudies = [
   {
-    title: 'From Manual to Automated',
-    subtitle: 'E-commerce WhatsApp Success Story',
-    industry: 'E-commerce',
-    challenge: 'Processing 200+ daily customer inquiries manually, causing 4-hour response delays',
-    solution: 'AI-powered WhatsApp automation with smart routing and instant responses',
-    icon: MessageSquare,
+    title: '$42K Revenue Generated',
+    subtitle: 'Windmill Growth - AI Lead Generation Success',
+    industry: 'B2B SaaS',
+    challenge: 'Manual lead generation and email outreach was time-consuming and inconsistent, resulting in low meeting conversion rates',
+    solution: 'Custom AI-powered lead generation system with data enrichment and personalized email campaigns tailored per client',
+    icon: TrendingUp,
     stats: [
-      { icon: Clock, label: 'Response Time', value: '< 30 sec', change: 'from 4 hours' },
-      { icon: Users, label: 'Daily Messages', value: '2M+', change: 'processed' },
-      { icon: DollarSign, label: 'Cost Savings', value: '$120K', change: 'annually' },
+      { icon: DollarSign, label: 'Revenue Generated', value: '$42,000', change: 'in campaign' },
+      { icon: Users, label: 'Sales Meetings', value: '35', change: 'booked & closed' },
+      { icon: Zap, label: 'Email Personalization', value: '100%', change: 'AI-generated' },
     ],
+    company: 'Windmill Growth',
+    person: 'Ben Buaron, CEO'
   },
   {
     title: '10x Lead Generation',
@@ -149,9 +151,14 @@ const CaseStudiesEnhanced = () => {
                       <h3 className="text-2xl sm:text-3xl font-display text-neutral-900 mb-1 sm:mb-2 tracking-tight">
                         {study.title}
                       </h3>
-                      <p className="text-sm sm:text-base text-violet-600">
+                      <p className="text-sm sm:text-base text-violet-600 mb-2">
                         {study.subtitle}
                       </p>
+                      {study.person && (
+                        <p className="text-xs sm:text-sm text-neutral-500 italic">
+                          {study.person}
+                        </p>
+                      )}
                     </div>
                   </div>
 
