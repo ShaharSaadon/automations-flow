@@ -47,10 +47,9 @@ const stats = [
 
 const Stats = () => {
   return (
-    <section className="section-overlay-light py-16 md:py-24 relative overflow-hidden border-y border-violet-100/60">
-      {/* Subtle accent lines for visual separation */}
+    <section className="section-overlay-light py-20 md:py-32 relative overflow-hidden border-t border-violet-100/60">
+      {/* Subtle accent line for visual separation */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-200/50 to-transparent pointer-events-none" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-200/50 to-transparent pointer-events-none" />
 
       <Container className="relative z-10">
         {/* Section Header - Scalability Proof */}

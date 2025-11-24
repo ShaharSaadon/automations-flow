@@ -74,7 +74,7 @@ const LogoRow = ({ logos, direction = 'left', speed = 40 }: { logos: typeof topR
 
 const TechStack = () => {
   return (
-    <section id="technology" className="py-16 md:py-24 section-light border-t border-violet-100/60">
+    <section id="technology" className="py-20 md:py-32 section-light border-t border-violet-100/60">
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-grid opacity-20" />

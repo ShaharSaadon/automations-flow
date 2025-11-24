@@ -134,7 +134,7 @@ const Services = () => {
   }
 
   return (
-    <section id="services" className="section-overlay-accent py-20 md:py-32">
+    <section id="services" className="section-overlay-accent py-20 md:py-32 border-t border-violet-100/60">
       {/* Subtle atmospheric overlay - layers on page gradient */}
       <div className="absolute inset-0 bg-gradient-mesh opacity-20 pointer-events-none" />
 
